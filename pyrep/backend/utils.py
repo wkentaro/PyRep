@@ -101,8 +101,8 @@ def suppress_std_out_and_err():
         devnull_fd = devnull.fileno()
 
         def _redirect_stdout(to_fd):
-            sys.stdout.close()
             try:
+                sys.stdout.close()
                 os.dup2(to_fd, original_stdout_fd)
             except OSError:
                 return
