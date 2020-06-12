@@ -87,7 +87,7 @@ def suppress_std_out_and_err():
         # If we are using an IDE, then this will fail
         original_stdout_fd = sys.stdout.fileno()
         original_stderr_fd = sys.stderr.fileno()
-    except io.UnsupportedOperation:
+    except Exception:
         # Nothing we can do about this, just don't suppress
         yield
         return
