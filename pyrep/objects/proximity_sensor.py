@@ -15,6 +15,10 @@ class ProximitySensor(Object):
     def _get_requested_type(self) -> ObjectType:
         return ObjectType.PROXIMITY_SENSOR
 
+    def read2(self) -> float:
+        state, handle, point, normal = sim.simReadProximitySensor(self._handle)
+        return state, handle, point, normal
+
     def read(self) -> float:
         """Read the distance between sensor and first detected object. If
         there is no detected object returns -1.0. It can be considered as

@@ -307,7 +307,7 @@ def simReadProximitySensor(sensorHandle):
         sensorHandle, detectedPoint, detectedObjectHandle,
         detectedSurfaceNormalVector)
     _check_return(state)
-    return (state, detectedObjectHandle, list(detectedPoint),
+    return (state, detectedObjectHandle[0], list(detectedPoint),
             list(detectedSurfaceNormalVector))
 
 
