@@ -343,6 +343,12 @@ def simSaveScene(filename):
     return val
 
 
+def simScaleObject(objectHandle, xScale, yScale, zScale):
+    val = lib.simScaleObject(objectHandle, xScale, yScale, zScale, 0)
+    _check_return(val)
+    return val
+
+
 def simGetObjectName(objectHandle):
     name_raw = lib.simGetObjectName(objectHandle)
     if name_raw == ffi.NULL:

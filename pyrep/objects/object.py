@@ -120,6 +120,9 @@ class Object(object):
         """
         sim.simSetObjectName(self._handle, name)
 
+    def scale(self, scale: Union[list, np.ndarray]):
+        sim.simScaleObject(self._handle, scale[0], scale[1], scale[2])
+
     def get_position(self, relative_to=None) -> np.ndarray:
         """Gets the position of this object.
 
