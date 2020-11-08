@@ -794,6 +794,14 @@ def simCheckCollision(entity1Handle, entity2Handle):
     return state
 
 
+def simCheckCollisionEx(entity1Handle, entity2Handle):
+    intersectionSegments = ffi.new('float **')
+    count = lib.simCheckCollisionEx(entity1Handle, entity2Handle, intersectionSegments)
+    outIntersectionSegments = [intersectionSegments[0][i] for i in range(count * 3 * 2)]
+    simReleaseBuffer(ffi.cast('char *', intersectionSegments[0]))
+    return outIntersectionSegments
+
+
 def simGetPositionOnPath(pathHandle, relativeDistance):
     position = ffi.new('float[3]')
     ret = lib.simGetPositionOnPath(pathHandle, relativeDistance, position)

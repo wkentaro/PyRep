@@ -489,6 +489,12 @@ class Object(object):
         handle = sim.sim_handle_all if obj is None else obj.get_handle()
         return sim.simCheckCollision(self._handle, handle) == 1
 
+    def check_collision_ex(self, obj: 'Object' = None) -> bool:
+        handle = sim.sim_handle_all if obj is None else obj.get_handle()
+        segments = sim.simCheckCollisionEx(self._handle, handle)
+        segments = np.array(segments).reshape(-1, 2, 3)
+        return segments
+
     # === Model specific methods ===
 
     def is_model_collidable(self) -> bool:
